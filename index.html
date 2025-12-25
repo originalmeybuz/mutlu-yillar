@@ -3,102 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUTLU YILLAR ARDA! 🎄</title>
+    <title>MUTLU YILLAR ARDA!</title>
     <style>
+        /* Arka planı düz siyah yapalım ki her şey net görünsün */
         body {
-            background: radial-gradient(circle, #1a1a1a, #000000);
-            color: white;
+            background-color: #000;
+            color: #ffffff;
             text-align: center;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Arial Black', sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
         }
+
+        /* Yazıların parlamasını sağlayalım */
         h1 {
-            font-size: 2.5rem;
-            text-shadow: 0 0 20px #ff0000;
-            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #ff0000;
+            text-shadow: 2px 2px 20px #fff;
+            margin: 20px;
+            display: block !important; /* Görünmeye zorla */
         }
+
         .frame {
-            position: relative;
-            border: 10px solid #fff;
-            box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            max-width: 350px;
-            transform: rotate(-2deg);
+            border: 5px solid #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+            width: 80%;
+            max-width: 400px;
         }
+
         img {
             width: 100%;
+            height: auto;
             display: block;
         }
+
         #start-btn {
             margin-top: 30px;
-            padding: 15px 40px;
+            padding: 20px 50px;
             font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #ff0000, #ffcc00);
-            border: none;
-            border-radius: 50px;
+            background: #25d366; /* WhatsApp yeşili gibi dikkat çekici */
             color: white;
+            border: none;
+            border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
-            z-index: 10;
-        }
-        #start-btn:hover {
-            transform: scale(1.1);
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
         }
     </style>
 </head>
 <body>
 
-    <h1>🎅 HEYO! MUTLU YILLAR! 🎅</h1>
+    <h1>🎅 MUTLU YILLAR ARDA! 🎅</h1>
     
     <div class="frame">
-        <img src="arda.jpeg" alt="Yılın Adamı">
+        <img src="arda.jpeg" alt="Arda">
     </div>
 
-    <audio id="partyMusic" loop>
-        <source src="müzik.mp3" type="audio/mpeg">
+    <audio id="partyMusic" preload="auto">
+        <source src="muzik.mp3" type="audio/mpeg">
     </audio>
 
-    <button id="start-btn" onclick="letThePartyStart()">TIKLA VE GÖR! 🎁</button>
+    <button id="start-btn" onclick="letThePartyStart()">SÜRPRİZİ AÇ! ✨</button>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     
     <script>
         function letThePartyStart() {
-            // Müziği başlat
             var audio = document.getElementById("partyMusic");
-            audio.play();
             
-            // Butonu yok et
+            // Müziği oynatmayı dene
+            audio.play().catch(function(error) {
+                console.log("Müzik çalma hatası: ", error);
+                alert("Müzik yüklenemedi, dosya adını 'muzik.mp3' yaptığına emin ol!");
+            });
+            
             document.getElementById("start-btn").style.display = "none";
             
-            // Konfeti fırtınası
-            var end = Date.now() + (15 * 1000);
+            // Konfeti efekti
+            var end = Date.now() + (10 * 1000);
             (function frame() {
-                confetti({
-                    particleCount: 5,
-                    angle: 60,
-                    spread: 55,
-                    origin: { x: 0 },
-                    colors: ['#ff0000', '#ffd700']
-                });
-                confetti({
-                    particleCount: 5,
-                    angle: 120,
-                    spread: 55,
-                    origin: { x: 1 },
-                    colors: ['#ff0000', '#ffd700']
-                });
-
-                if (Date.now() < end) {
-                    requestAnimationFrame(frame);
-                }
+                confetti({ particleCount: 7, angle: 60, spread: 55, origin: { x: 0 } });
+                confetti({ particleCount: 7, angle: 120, spread: 55, origin: { x: 1 } });
+                if (Date.now() < end) { requestAnimationFrame(frame); }
             }());
         }
     </script>
