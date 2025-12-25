@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mutlu Yıllar!</title>
+    <style>
+        body { text-align: center; background-color: #f0f0f0; font-family: sans-serif; }
+        img { max-width: 90%; height: auto; border: 10px solid gold; margin-top: 50px; }
+        h1 { color: red; }
+    </style>
+</head>
+<body>
+    <h1>MUTLU YILLAR! 🎄</h1>
+    <img src="fotograf.jpg" alt="Komik Foto">
+    
+    <br><br>
+    <audio controls autoplay>
+        <source src="muzik.mp3" type="audio/mpeg">
+        Tarayıcın müziği desteklemiyor.
+    </audio>
+</body>
+</html>
